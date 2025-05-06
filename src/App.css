@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,387 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Add 3D floating animation to cards */
+@keyframes float-3d {
+  0% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: translateY(-7px) translateZ(10px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.05);
+  }
+  100% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.floating-3d {
+  animation: float-3d 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Parallax effect for cards */
+.parallax-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Particle animation for background */
+@keyframes particle-move {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--move-x), var(--move-y), 0) rotate(var(--rotate)) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gradient);
+  pointer-events: none;
+  animation: particle-move var(--duration) ease-out forwards;
+}
+
+/* Enhanced brilliant animations */
+@keyframes reveal-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-right {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reveal-rotate {
+  0% {
+    opacity: 0;
+    transform: rotate(-15deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes reveal-flip {
+  0% {
+    transform: perspective(800px) rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(800px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-bounce {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(.19,1,.22,1);
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-10px);
+    animation-timing-function: cubic-bezier(.19,1,.22,1);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-glide {
+  0% {
+    transform: translateY(60px) translateX(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-blur {
+  0% {
+    opacity: 0;
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* New shine effect for cards */
+@keyframes shine-effect {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shine-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.shine-hover:hover::before {
+  opacity: 1;
+  animation: shine-effect 1.2s forwards;
+}
+
+/* Animated gradient borders */
+@keyframes border-glow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: inherit;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #2A5ADA, #7367F0, #4A8CFF, #5E50E9);
+  background-size: 400% 400%;
+  animation: border-glow 8s ease infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* 3D perspective animations */
+@keyframes card-3d-effect {
+  0% {
+    transform: perspective(800px) rotateY(0) rotateX(0);
+  }
+  50% {
+    transform: perspective(800px) rotateY(10deg) rotateX(5deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(0) rotateX(0);
+  }
+}
+
+.card-3d-animation {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d-animation:hover {
+  animation: card-3d-effect 5s infinite;
+}
+
+/* Floating elements animation */
+@keyframes float-advanced {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) translateX(3px) rotate(1deg) scale(1.01);
+  }
+  50% {
+    transform: translateY(0) translateX(-3px) rotate(-1deg) scale(1);
+  }
+  75% {
+    transform: translateY(8px) translateX(3px) rotate(0.5deg) scale(0.99);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0) scale(1);
+  }
+}
+
+.float-advanced {
+  animation: float-advanced 12s ease-in-out infinite;
+}
+
+/* Scroll reveal transition styles */
+.scroll-reveal {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+}
+
+.scroll-reveal-up {
+  transform: translateY(40px);
+}
+
+.scroll-reveal-up.revealed {
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  transform: translateX(-40px);
+}
+
+.scroll-reveal-left.revealed {
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  transform: translateX(40px);
+}
+
+.scroll-reveal-right.revealed {
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  transform: scale(0.8);
+}
+
+.scroll-reveal-scale.revealed {
+  transform: scale(1);
+}
+
+.scroll-reveal-rotate {
+  transform: rotate(-15deg) scale(0.9);
+}
+
+.scroll-reveal-rotate.revealed {
+  transform: rotate(0) scale(1);
+}
+
+.scroll-reveal-flip {
+  transform: perspective(800px) rotateX(90deg);
+}
+
+.scroll-reveal-flip.revealed {
+  transform: perspective(800px) rotateX(0);
+}
+
+.scroll-reveal-bounce {
+  transform: translateY(60px);
+}
+
+.scroll-reveal-bounce.revealed {
+  transform: translateY(0);
+}
+
+.scroll-reveal-glide {
+  transform: translateY(40px) translateX(20px);
+}
+
+.scroll-reveal-glide.revealed {
+  transform: translateY(0) translateX(0);
+}
+
+.scroll-reveal-blur {
+  filter: blur(15px);
+}
+
+.scroll-reveal-blur.revealed {
+  filter: blur(0);
+}
+
+/* Stagger animation delays */
+.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.delay-400 {
+  transition-delay: 0.4s;
+}
+
+.delay-500 {
+  transition-delay: 0.5s;
 }
