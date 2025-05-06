@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-10 pb-4",
         isScrolled 
           ? "bg-tknx-background/80 backdrop-blur-xl border-b border-white/5" 
           : "bg-transparent"
