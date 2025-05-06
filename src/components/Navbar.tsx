@@ -43,7 +43,7 @@ const Navbar = () => {
               className="text-3xl font-bold flex items-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              <img src="/logo.png" alt="TKNX Logo" className="h-8 w-auto" />
+              <img src="/logo.png" alt="TKNX Logo" className="h-12 w-auto" />
             </Link>
           </div>
 
