@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from "@/lib/utils";
@@ -44,7 +43,7 @@ const Navbar = () => {
               className="text-3xl font-bold flex items-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              <span className="text-gradient font-extrabold">TKNX</span>
+              <img src="/logo.png" alt="TKNX Logo" className="h-8 w-auto" />
             </Link>
           </div>
 
